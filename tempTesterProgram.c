@@ -11,10 +11,7 @@ int main(void)
 
     printf("why doesnt it come back\n");
 
-    for(int i = 0; i < length; i++)
-    {
-        printf(array[i] + " ");
-    }
+    printArray(array, length);
 
     return(0);
 }
