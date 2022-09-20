@@ -12,7 +12,7 @@ void cleanup(FILE * fp, Linked_list_t * input, int * input_arr);
 void cleanup(FILE * fp, Linked_list_t * input, int * input_arr)
 {
     free_linked_list(input);
-    free(input_arr)
+    free(input_arr); //will sometimes attempt to free a null pointer
     if (fclose(fp) == EOF)
     {
         printf("INPUT_FILE_FAILED_TO_CLOSE\n");
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
         if (last_value <= 0)
         {
-            cleanup(fp, input);
+            cleanup(fp, input, NULL);
             printf("PARSING_ERROR_INVALID_CHARACTER_ENCOUNTERED\n");
             exit(PARSING_ERROR_INVALID_CHARACTER_ENCOUNTERED);
         }
@@ -86,8 +86,9 @@ int main(int argc, char *argv[])
 
     printf("size: %i\tfinal index: %i\n", input->size, input_arr[input->size - 1]);
 
-    // pass to MOM: input_arr, 
+    if (which_smallest < input->size) printf("-1\n");
 
-    cleanup(fp, input);
-    free(input_arr);
+    // pass to MOM: input_arr, input->size, which_smallest
+
+    cleanup(fp, input, input_arr);
 }
