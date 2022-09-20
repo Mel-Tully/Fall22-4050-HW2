@@ -33,8 +33,9 @@ void printArray(int * array, int length)
 {
     for(int i = 0; i < length; i++)
     {
-        printf(array[i] + " ");
+        printf("%i ", array[i]);
     }
+    printf("\n");
 }
 
 /*Do we need to also pass a pointer to an array for this to work properly? */
