@@ -11,16 +11,6 @@ void Partition(int * array, int p) //do we need length
 
 }
 
-int * readInValues()
-{
-    //open file
-    //scan file to obtain number of elements (or just put elems into a linked list)
-    //malloc array space
-    //iterate thru file again to make an array
-    //set length val to be the total length of the array
-
-}
-
 //need to update method types
 void MOMSelect(int * array, int k, int l) //l is for length
 {
