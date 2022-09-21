@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include "input_error.h"
 #include "linked_list.h"
+#include "MOM.h"
 
 void cleanup(FILE * fp, Linked_list_t * input, int * input_arr);
 
@@ -25,6 +26,7 @@ int main(int argc, char *argv[])
     char last_line[20]; //last read line from text file input
     int which_smallest; //x-th small number to return, based on the first line
     int last_value; //most recent integer read from input file, excuding which_smallest
+    int return_value;
 
     // Check for correct number of command line arguements
     if (argc != 2)
@@ -84,11 +86,16 @@ int main(int argc, char *argv[])
         current_node = current_node->next;
     }
 
+    
+
     printf("size: %i\tfinal index: %i\n", input->size, input_arr[input->size - 1]);
 
-    if (which_smallest < input->size) printf("-1\n");
+    if (which_smallest < input->size) return_value = -1;
 
-    // pass to MOM: input_arr, input->size, which_smallest
+    // Run Median of Medians
+    return_value = MOMSelect(input, which_smallest, input->size);
+
+    printf("%i\n", return_value);
 
     cleanup(fp, input, input_arr);
 }
